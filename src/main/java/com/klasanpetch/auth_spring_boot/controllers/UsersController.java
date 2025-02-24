@@ -28,7 +28,7 @@ public class UsersController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody Users user, HttpServletResponse response) {
+    public ResponseEntity<String> login(@RequestBody Users user, HttpServletResponse response) {
         String accessToken = service.verify(user);
 
         if (accessToken == null || accessToken.isEmpty()) {

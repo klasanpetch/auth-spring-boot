@@ -35,6 +35,7 @@ public class WebSecurityConfig {
                         .authorizeHttpRequests(request -> request
                                 .requestMatchers("/register", "/login").permitAll()
                                 .anyRequest().authenticated())
+                        .logout((logout) -> logout.deleteCookies("accessToken"))
                         .httpBasic(Customizer.withDefaults())
                         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
